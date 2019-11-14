@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { FC } from "react";
 import { LaunchProfileQuery } from "../../generated/graphql";
 import "./styles.css";
 
@@ -8,7 +8,7 @@ interface Props {
 
 const className = "LaunchProfile";
 
-const LaunchProfile: React.FC<Props> = ({ data }) => {
+const LaunchProfile: FC<Props> = ({ data }) => {
   if (!data.launch) {
     return <div>No launch available</div>;
   }
@@ -33,7 +33,7 @@ const LaunchProfile: React.FC<Props> = ({ data }) => {
         <div className={`${className}__image-list`}>
           {data.launch.links.flickr_images.map(image =>
             image ? (
-              <img src={image} className={`${className}__image`} key={image} />
+              <img src={image} className={`${className}__image`} alt="flight" key={image} />
             ) : null
           )}
         </div>

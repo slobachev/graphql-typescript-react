@@ -1,15 +1,18 @@
-import React from 'react';
-import './App.css';
-import LaunchListContainer from './components/LaunchList';
-import LaunchProfileContainer from './components/LaunchProfile';
+import React, { useState, useCallback } from "react";
+import "./App.css";
+import LaunchList from "./components/LaunchList";
+import LaunchProfile from "./components/LaunchProfile";
 
 const App = () => {
+  const [id, setId] = useState(42);
+  const handleIdChange = useCallback(newId => setId(newId), []);
+
   return (
     <div className="App">
-      <LaunchListContainer />
-      <LaunchProfileContainer />
+      <LaunchList handleIdChange={handleIdChange} />
+      <LaunchProfile id={id}/>
     </div>
   );
-}
+};
 
 export default App;
